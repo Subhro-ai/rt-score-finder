@@ -8,12 +8,15 @@ def formatter(word):
     return new_word
 name = input("Enter the movie name : ")
 name = formatter(name)
-print(name)
+# print(name)
 link = f"https://www.rottentomatoes.com/m/{name}"
 source = requests.get(link).text
 soup = BeautifulSoup(source, 'lxml')
 title = soup.find('h1').text
-print("Movie name", title)
+print()
+print("Movie name : ", title)
 score_board = soup.find('score-board-deprecated')
-score = score_board['tomatometerscore']
-print(score)
+print("Tomatometer : ", score_board['tomatometerscore'])
+print("Rating : ", score_board['rating'])
+print(score_board.find('p').text)
+
