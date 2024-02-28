@@ -8,7 +8,6 @@ def formatter(word):
     return new_word
 name = input("Enter the movie name : ")
 name = formatter(name)
-# print(name)
 link = f"https://www.rottentomatoes.com/m/{name}"
 source = requests.get(link).text
 soup = BeautifulSoup(source, 'lxml')
